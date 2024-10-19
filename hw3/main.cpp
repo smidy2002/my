@@ -11,13 +11,13 @@ uint32_t valid(string string_num)
     uint32_t ans = 0;
     const string maxValue = std::numeric_limits<uint32_t>.max();
     if (n[0] == '0') { return -1; }
-    if (string_num[i] > '9' || string_num[i] < 48) { return -1; }
-    if (!(string_num.size() < maxValue.size() || string_num.size() == maxValue.size() && string_num <= maxValue))
+    if (!((string_num.size() < maxValue.size()) || ((string_num.size() == maxValue.size()) && (string_num <= maxValue))))
     {
         return -1;
     }
     while (i < string_num.size())
     {
+        if (string_num[i] > '9' || string_num[i] < 48) { return -1; }
         ans += int(string_num[i] - 48) * pow(10, string_num.size() - i - 1);
         i++;
     }
