@@ -1,39 +1,42 @@
 ﻿#include <iostream>
 #include <string>
 #include <cmath>
-using namespace std;
-int valid(string n)
+using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+uint32_t valid(string string_num)
 {
-    int i = 0;
-    long int ans = 0;
-    while (i < n.size())
+    uint32_t i = 0;
+    uint32_t ans = 0;
+    const string maxValue = std::numeric_limits<uint32_t>.max();
+    if (n[0] == '0') { return -1; }
+    if (string_num[i] > '9' || string_num[i] < 48) { return -1; }
+    if (!(string_num.size() < maxValue.size() || string_num.size() == maxValue.size() && string_num <= maxValue))
     {
-        const string maxValue = "2147483647";
-        if(n[0] == 48) { return -1; }
-        if (n[i] > 57 || n[i] < 48) { return -1; }
-        if (!(n.size() < maxValue.size() || n.size() == maxValue.size() && n <= maxValue))//не смог придумать сам взял у умных дядек
-        {
-            return -1;
-        }
-        ans += int(n[i] - 48) * pow(10, n.size() - i - 1);
+        return -1;
+    }
+    while (i < string_num.size())
+    {
+        ans += int(string_num[i] - 48) * pow(10, string_num.size() - i - 1);
         i++;
     }
-    
     return ans;
 }
 int main()
 {
-    string n = "-1";
+    string string_num = "-1";
     int ans = 0;
-    while (n != "5312")
+    while (string_num != "5312")
     {
-        cin >> n;
-        if (valid(n) != -1) { ans += valid(n); }
+        cin >> string_num;
+        uint32_t valid_string_num = valid(string_num);
+        if (valid_string_num != -1) { ans += valid_string_num; }
         else
         {
-            cout << "invalid sintaxis"<<'\n';
+            cout << "invalid syntax"<<'\n';
         }
     }
-    cout << ans;
+    cout << ans << endl;
 }
 
