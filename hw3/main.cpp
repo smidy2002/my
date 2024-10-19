@@ -17,8 +17,8 @@ uint32_t valid(string string_num)
     }
     while (i < string_num.size())
     {
-        if (string_num[i] > '9' || string_num[i] < 48) { return -1; }
-        ans += int(string_num[i] - 48) * pow(10, string_num.size() - i - 1);
+        if (string_num[i] > '9' || string_num[i] < '0') { return -1; }
+        ans += int(string_num[i] - '0') * pow(10, string_num.size() - i - 1);
         i++;
     }
     return ans;
@@ -26,7 +26,7 @@ uint32_t valid(string string_num)
 int main()
 {
     string string_num = "-1";
-    int ans = 0;
+    uint32_t ans = 0;
     while (string_num != "5312")
     {
         cin >> string_num;
