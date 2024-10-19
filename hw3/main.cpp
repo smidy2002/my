@@ -9,7 +9,7 @@ uint32_t valid(string string_num)
 {
     uint32_t i = 0;
     uint32_t ans = 0;
-    const string maxValue = std::numeric_limits<uint32_t>.max();
+    const string maxValue = std::to_string(std::numeric_limits<uint32_t>.max());
     if (n[0] == '0') { return -1; }
     if (!((string_num.size() < maxValue.size()) || ((string_num.size() == maxValue.size()) && (string_num <= maxValue))))
     {
